@@ -9,6 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>cnct-common</module>
+        <module>cnct-registry</module>
+        <module>cnct-api-gateway</module>
     </modules>
 
     <packaging>pom</packaging>
