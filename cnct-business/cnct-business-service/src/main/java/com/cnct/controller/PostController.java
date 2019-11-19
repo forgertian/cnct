@@ -2,16 +2,15 @@ package com.cnct.controller;
 
 import com.cnct.pojo.CarInfo;
 import com.cnct.pojo.GoodsType;
+import com.cnct.pojo.Unit;
 import com.cnct.pojo.VehicleType;
 import com.cnct.service.CarInfoService;
 import com.cnct.service.GoodsTypeService;
+import com.cnct.service.UnitService;
 import com.cnct.service.VehicleTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +25,9 @@ public class PostController {
 
     @Autowired
     private CarInfoService carInfoService;
+
+    @Autowired
+    private UnitService unitService;
 
     @GetMapping("post/queryGoodsType")
     public ResponseEntity<List<GoodsType>> queryGoodsType(){
@@ -43,6 +45,12 @@ public class PostController {
     public ResponseEntity<Void> addCarInfo(CarInfo carInfo){
         carInfoService.addCarInfo(carInfo);
         return ResponseEntity.ok(null);
+    }
+
+    @GetMapping("post/queryUnit")
+    public ResponseEntity<List<Unit>> queryUnit(@RequestParam("status") Integer status){
+       List<Unit> list = unitService.queryUnit(status);
+       return ResponseEntity.ok(list);
     }
 
 }
