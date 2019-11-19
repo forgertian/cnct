@@ -1,0 +1,33 @@
+server:
+  port: 10011
+spring:
+  application:
+    name: cnct-config
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:${config-location}
+        fail-fast: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123@localhost:10086/eureka
+#      defaultZone: http://localhost:10086/eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}
+
+#actuator设置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有端点,默认是info和health
+  endpoint:
+    health:
+      show-details: always #默认是never
