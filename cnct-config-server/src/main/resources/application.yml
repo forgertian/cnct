@@ -10,7 +10,7 @@ spring:
       server:
         native:
           search-locations: classpath:${config-location}
-        fail-fast: true
+      fail-fast: true
 eureka:
   client:
     service-url:
