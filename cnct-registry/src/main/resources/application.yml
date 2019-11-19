@@ -3,12 +3,20 @@ server:
 spring:
   application:
     name: cnct-registry
+  security:
+    user:
+      name: admin
+      password: 123
+
 eureka:
+  instance:
+    hostname: 127.0.0.1
   client:
     fetch-registry: false
     register-with-eureka: false
     service-url:
-      defaultZone: http://127.0.0.1:${server.port}/eureka
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
   server:
     enable-self-preservation: false # 关闭自我保护
     eviction-interval-timer-in-ms: 5000 # 每隔 5 秒进行一次服务列表清理

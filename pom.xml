@@ -11,6 +11,7 @@
         <module>cnct-common</module>
         <module>cnct-registry</module>
         <module>cnct-api-gateway</module>
+        <module>cnct-config-server</module>
     </modules>
 
     <packaging>pom</packaging>
