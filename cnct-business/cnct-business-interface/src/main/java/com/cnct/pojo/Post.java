@@ -14,24 +14,24 @@ public class Post {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    private Long user_id;
-    private String start_place;
-    private String end_start;
-    private Double car_length;
+    private Long userId;
+    private String startPlace;
+    private String endPlace;
+    private Double carLength;
     private Double weight;
-    private Long weight_id;
-    private Long goodstype_id;
-    private Long linetype_id;
-    private Date return_time;
-    private Date failure_time;
-    private Date create_time;
-    private String user_name;
+    private Long weightId;
+    private Long goodsTypeId;
+    private Long lineTypeId;
+    private Date returnTime;
+    private Date failureTime;
+    private Date createTime;
+    private String userName;
     private String phone;
     private String qq;
     private String email;
     private Double price;
-    private Long price_id;
-    private String goods_name;
+    private Long priceId;
+    private String goodsName;
     private String mark;
     private Integer status;
 

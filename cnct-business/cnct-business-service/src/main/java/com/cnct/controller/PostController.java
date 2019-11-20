@@ -1,13 +1,7 @@
 package com.cnct.controller;
 
-import com.cnct.pojo.CarInfo;
-import com.cnct.pojo.GoodsType;
-import com.cnct.pojo.Unit;
-import com.cnct.pojo.VehicleType;
-import com.cnct.service.CarInfoService;
-import com.cnct.service.GoodsTypeService;
-import com.cnct.service.UnitService;
-import com.cnct.service.VehicleTypeService;
+import com.cnct.pojo.*;
+import com.cnct.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +22,12 @@ public class PostController {
 
     @Autowired
     private UnitService unitService;
+
+    @Autowired
+    private PostService postService;
+
+    @Autowired
+    private CityService cityService;
 
     @GetMapping("post/queryGoodsType")
     public ResponseEntity<List<GoodsType>> queryGoodsType(){
@@ -53,4 +53,15 @@ public class PostController {
        return ResponseEntity.ok(list);
     }
 
+//    @PostMapping("post/addPost")
+////    public ResponseEntity<Void> addPost(Post post){
+////        postService.addPost();
+////        return ResponseEntity.ok(null);
+//    }
+
+    @GetMapping("post/queryCity")
+     public ResponseEntity<List<City>> queryCity(@RequestParam("pid") Long pid){
+        List<City> list = cityService.queryCity(pid);
+        return ResponseEntity.ok(list);
+    }
 }

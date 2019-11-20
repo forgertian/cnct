@@ -10,7 +10,8 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>hc_business</artifactId>
+    <artifactId>cnct-business</artifactId>
+    <groupId>com.cnct.parent</groupId>
     <packaging>pom</packaging>
     <modules>
         <module>cnct-business-interface</module>
