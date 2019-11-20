@@ -3,14 +3,30 @@ server:
 spring:
   application:
     name: cnct-api-gateway
-  profiles:
-    active: pro #对应的是某个(3种)环境的配置文件
-  cloud:
-    config:
-      discovery:
-        service-id: cnct-config #指定配置中心的服务名称
-        enabled: true
-      fail-fast: true
+zuul:
+  prefix: /api # 添加路由前缀
+  retryable: true
+  routes:
+    user-server: /user/** # 将用户中心服务映射到/user/**
+  ignored-patterns: /upload/**
+  ignored-services:
+    - upload-service  # 忽略upload-service服务
+  add-host-header: true
+  sensitive-headers: #null 设为null代表禁用敏感头过滤
+
+ribbon:
+  ConnectTimeout: 250 # 连接超时时间(ms)
+  ReadTimeout: 2000 # 通信超时时间(ms)
+  OkToRetryOnAllOperations: true # 是否对所有操作重试
+  MaxAutoRetriesNextServer: 1 # 同一服务不同实例的重试次数
+  MaxAutoRetries: 1 # 同一实例的重试次数
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000 # 熔断超时时长：10000ms
 eureka:
   client:
     service-url:
@@ -20,5 +36,6 @@ eureka:
     prefer-ip-address: true
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port}
+
 
 

@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://10.11.60.234:3306/cnct
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 30
+      minimum-idle: 10
+    driver-class-name: com.mysql.jdbc.Driver

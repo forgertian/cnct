@@ -2,6 +2,7 @@ zuul:
   prefix: /api # 添加路由前缀
   retryable: true
   routes:
+    user-server: /user/**
   ignored-patterns: /upload/**
   ignored-services:
     - upload-service  # 忽略upload-service服务
