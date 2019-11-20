@@ -17,11 +17,12 @@ public class Post {
     private Long userId;
     private String startPlace;
     private String endPlace;
-    private Double carLength;
-    private Double weight;
-    private Long weightId;
-    private Long goodsTypeId;
-    private Long lineTypeId;
+    private String carLength;
+    private String weight;
+    private String weightUnit;
+    private String goodsType1;
+    private String goodsType2;
+    private String lineType;
     private Date returnTime;
     private Date failureTime;
     private Date createTime;
@@ -29,10 +30,11 @@ public class Post {
     private String phone;
     private String qq;
     private String email;
-    private Double price;
-    private Long priceId;
+    private Integer isCar;
+    private String price;
+    private String priceUnit;
     private String goodsName;
     private String mark;
     private Integer status;
-
+    private Integer count;
 }

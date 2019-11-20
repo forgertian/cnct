@@ -13,8 +13,8 @@ public class CarInfo {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private Long userId;
-    private Long carTypeId;
-    private Long goodsTypeId;
+    private String carType;
+    private String goodsType;
     private Long count;
     private String lpNumber;
     private String viNumber;
