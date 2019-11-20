@@ -13,6 +13,7 @@
         <module>cnct-api-gateway</module>
         <module>cnct-config-server</module>
         <module>cnct-business</module>
+        <module>cnct-user</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -33,7 +34,7 @@
         <mapper.starter.version>2.1.5</mapper.starter.version>
         <mysql.version>5.1.48</mysql.version>
         <pageHelper.starter.version>1.2.3</pageHelper.starter.version>
-        <wlkg.latest.version>1.0-SNAPSHOT</wlkg.latest.version>
+        <cnct.latest.version>1.0-SNAPSHOT</cnct.latest.version>
         <fastDFS.client.version>1.26.1-RELEASE</fastDFS.client.version>
     </properties>
 
