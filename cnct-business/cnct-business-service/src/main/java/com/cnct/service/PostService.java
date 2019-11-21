@@ -19,6 +19,7 @@ public class PostService {
     private PostMapper postMapper;
 
     public void addPost(Post post) {
+        System.out.println(post);
         post.setStatus(1);
         post.setCreateTime(new Date());
         post.setPriceUnit("元/"+ post.getPriceUnit());
@@ -39,8 +40,7 @@ public class PostService {
         Result<Post> result = new Result<>();
         result.setPosts(info.getList());
         result.setPage(info.getPages());
-        int total = (int)info.getTotal();
-        result.setTotal(total);
+        result.setTotal(info.getTotal());
         return result;
     }
 
@@ -59,5 +59,32 @@ public class PostService {
         post.setStatus(post1.getStatus());
         post.setIsCar(post1.getIsCar());
         postMapper.updateByPrimaryKey(post);
+    }
+
+    public Result<Post> searchAll(Post post,Integer page,Integer rows) {
+        PageHelper.startPage(page,rows);
+       Date date = new Date();
+        String unit = post.getPriceUnit();
+        if(post.getPriceUnit()!=null){
+            unit = "元/"+post.getPriceUnit();
+        }
+        Example example = new Example(Post.class);
+        example.createCriteria()
+                .andEqualTo("startPlace",post.getStartPlace())
+                .andEqualTo("endPlace",post.getEndPlace())
+                .andEqualTo("weight",post.getWeight())
+                .andEqualTo("weightUnit",post.getWeightUnit())
+                .andEqualTo("goodsType1",post.getGoodsType1())
+                .andEqualTo("lineType",post.getLineType())
+                .andEqualTo("priceUnit",unit)
+                .andEqualTo("price",post.getPrice())
+                .andBetween("createTime",post.getCreateTime(),date);
+        List<Post> list = postMapper.selectByExample(example);
+        PageInfo<Post> info = new PageInfo<>(list);
+        Result<Post> result = new Result<>();
+        result.setPosts(info.getList());
+        result.setPage(info.getPages());
+        result.setTotal(info.getTotal());
+        return result;
     }
 }

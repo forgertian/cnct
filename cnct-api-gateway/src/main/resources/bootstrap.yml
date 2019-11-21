@@ -7,8 +7,8 @@ zuul:
   prefix: /api # 添加路由前缀
   retryable: true
   routes:
-    user-server: /user/** # 将用户中心服务映射到/user/**
-    perms-server: /perms/** # 将后台权限服务映射到/perms/**
+    business-server: /post/**
+    user-server: /user/**  # 将用户中心服务映射到/user/**
   ignored-patterns: /upload/**
   ignored-services:
     - upload-service  # 忽略upload-service服务

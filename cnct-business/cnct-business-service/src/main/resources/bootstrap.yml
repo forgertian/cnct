@@ -11,7 +11,6 @@ spring:
         service-id: cnct-config #指定配置中心的服务名称
         enabled: true
       fail-fast: true
-
 eureka:
   client:
     service-url:
@@ -25,3 +24,6 @@ management:
   endpoint:
     health:
       show-details: always
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

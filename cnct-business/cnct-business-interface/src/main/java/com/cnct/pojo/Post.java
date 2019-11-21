@@ -19,6 +19,7 @@ public class Post {
     private String endPlace;
     private String carLength;
     private String weight;
+    private String carType;
     private String weightUnit;
     private String goodsType1;
     private String goodsType2;
@@ -31,7 +32,7 @@ public class Post {
     private String qq;
     private String email;
     private Integer isCar;
-    private String price;
+    private Double price;
     private String priceUnit;
     private String goodsName;
     private String mark;
