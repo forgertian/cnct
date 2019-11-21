@@ -23,6 +23,7 @@ spring:
 eureka:
   client:
     service-url:
+#      defaultZone: http://127.0.0.1:10086/eureka
       defaultZone: http://admin:123@127.0.0.1:10086/eureka
     registry-fetch-interval-seconds: 5
   instance:

@@ -27,6 +27,7 @@ public class User {
   private String password;
   private String name;
   private Long gender;
+  @Pattern(regexp = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$",message = "邮箱格式不正确")
   private String email;
   private String companyName;
 
@@ -55,4 +56,9 @@ public class User {
   private Long isVip;
   private java.sql.Date vipEndTime;
   private Long bannedStatus;
+
+  public User(Long id,Long bannedStatus){
+    this.id = id;
+    this.bannedStatus = bannedStatus;
+  }
 }
