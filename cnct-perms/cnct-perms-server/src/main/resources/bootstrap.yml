@@ -1,0 +1,44 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: perms-server
+  datasource:
+    url: jdbc:mysql://10.11.60.234:3306/cnct
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 30
+      minimum-idle: 10
+    driver-class-name: com.mysql.jdbc.Driver
+  #  profiles:
+  #    active: pro #对应的是某个(3种)环境的配置文件
+  #  cloud:
+  #    config:
+  #      discovery:
+  #        service-id: cnct-config #指定配置中心的服务名称
+  #        enabled: true
+  #      fail-fast: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123@127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}
+
+mybatis:
+  type-aliases-package: com.cnct.pojo
+
+#actuator设置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有端点,默认是info和health
+  endpoint:
+    health:
+      show-details: always

@@ -14,6 +14,7 @@
         <module>cnct-config-server</module>
         <module>cnct-business</module>
         <module>cnct-user</module>
+        <module>cnct-perms</module>
     </modules>
 
     <packaging>pom</packaging>
