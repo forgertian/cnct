@@ -95,7 +95,12 @@ public class UserController {
      * 用户登录验证功能
      */
     @PostMapping("/queryuser/{phone}/{password}")
-    public ResponseEntity<User> queryUser(@PathVariable("phone") String phone,@PathVariable("password")String password){
+    public ResponseEntity<User> queryUser2(@PathVariable("phone") String phone,@PathVariable("password")String password){
+        User user = userService.queryUser(phone,password);
+        return ResponseEntity.ok(user);
+    }
+    @GetMapping("/query")
+    public ResponseEntity<User> queryUser(@RequestParam("phone") String phone,@RequestParam("password")String password){
         User user = userService.queryUser(phone,password);
         return ResponseEntity.ok(user);
     }

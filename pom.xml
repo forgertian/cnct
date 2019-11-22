@@ -18,6 +18,7 @@
         <module>cnct-user</module>
         <module>cnct-search</module>
         <module>cnct-upload</module>
+        <module>cnct-auth-center</module>
     </modules>
 
     <packaging>pom</packaging>

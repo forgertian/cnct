@@ -8,6 +8,8 @@ zuul:
   retryable: true
   routes:
     business-server: /post/**
+    perms-server: /perms/**
+    auth-server: /auth/**
     user-server: /user/**  # 将用户中心服务映射到/user/**
   ignored-patterns: /upload/**
   ignored-services:
@@ -37,6 +39,21 @@ eureka:
     prefer-ip-address: true
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port}
+
+cnct:
+  jwt:
+    pubKeyPath: E:/secretkey/rsa1.pub # 公钥地址
+    cookieName: CNCT_TOKEN # cookie的名称
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/checkcode
+      - /api/user/phone
+      - /api/user/code
+      - /api/item
+      - /api/user/query
 
 
 
