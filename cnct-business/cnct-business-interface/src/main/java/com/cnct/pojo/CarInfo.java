@@ -21,6 +21,7 @@ public class CarInfo {
     private String idNumber;
     private String followPhone;
     private String followDriver;
+    private String carImage;
 
 
 }

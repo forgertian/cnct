@@ -11,9 +11,9 @@ zuul:
     perms-server: /perms/**
     auth-server: /auth/**
     user-server: /user/**  # 将用户中心服务映射到/user/**
+#   upload-service: /upload/**
   ignored-patterns: /upload/**
-  ignored-services:
-    - upload-service  # 忽略upload-service服务
+  ignored-services: upload-server  # 忽略upload-service服务
   add-host-header: true
   sensitive-headers: #null 设为null代表禁用敏感头过滤
 

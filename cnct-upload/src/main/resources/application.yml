@@ -2,7 +2,7 @@ server:
   port: 10014
 spring:
   application:
-    name: upload-service
+    name: upload-server
   servlet:
     multipart:
       max-file-size: 5MB # 限制文件上传的大小
