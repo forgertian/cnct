@@ -30,6 +30,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <!-- 分页助手启动器 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${pageHelper.starter.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.cnct.server</groupId>
             <artifactId>cnct-user-interface</artifactId>

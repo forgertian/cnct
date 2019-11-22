@@ -1,5 +1,6 @@
 package com.cnct.controller;
 
+import com.cnct.common.vo.PageResult;
 import com.cnct.pojo.User;
 import com.cnct.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/checkcode/{phone}/{code}")
-    public ResponseEntity<Boolean> checkVerifyCode(@PathVariable("phone") String phone,@PathVariable("phone")String code){
+    public ResponseEntity<Boolean> checkVerifyCode(@PathVariable("phone") String phone,@PathVariable("code")String code){
         Boolean res = userService.checkVerifyCode(phone,code);
         return ResponseEntity.ok(res);
     }
@@ -91,8 +92,24 @@ public class UserController {
         return ResponseEntity.ok(null);
     }
     /**
-     * TODO 用户登录验证功能
+     * 用户登录验证功能
      */
+    @PostMapping("/queryuser/{phone}/{password}")
+    public ResponseEntity<User> queryUser(@PathVariable("phone") String phone,@PathVariable("password")String password){
+        User user = userService.queryUser(phone,password);
+        return ResponseEntity.ok(user);
+    }
+    /**
+     * 用户列表信息查询
+     */
+    @GetMapping("/userlists")
+    public ResponseEntity<PageResult<User>> findAllUsersByPage(
+            @RequestParam(value = "page",required = false,defaultValue = "1") Integer page,
+            @RequestParam(value = "rows",required = false,defaultValue = "10") Integer rows){
+        PageResult<User> resUser = userService.findAllUsersByPage(page,rows);
+        return ResponseEntity.ok(resUser);
+    }
+
 
 
 

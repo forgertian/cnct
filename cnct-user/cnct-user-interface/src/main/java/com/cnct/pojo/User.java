@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -52,10 +53,13 @@ public class User {
   private String address;
   private Long goodsType;
   private Long isStart;
-  private java.sql.Date createDate;
+  private Date createDate;
   private Long isVip;
-  private java.sql.Date vipEndTime;
+  private Date vipEndTime;
   private Long bannedStatus;
+  private String comConName;
+  @Pattern(regexp = "^1[35678]\\d{9}$", message = "手机号格式不正确")
+  private String comConPhone;
 
   public User(Long id,Long bannedStatus){
     this.id = id;

@@ -25,7 +25,8 @@ public enum ExceptionEnums {
     FAIL_COMPLETE_USER(20000,"用户信息完善失败"),
     INVALID_VERFIY_CODE_DISABLED(20001,"验证码已失效"),
     FAIL_DELETE_USER(20002,"删除用户信息失败"),
-    FAIL_BANNED_USER(20002,"封禁用户信息失败"),
+    FAIL_BANNED_USER(20003,"封禁用户信息失败"),
+    INVALID_USERNAME_PASSWORD(20004,"用户名或密码错误"),
     NO_AUTHORIZED(1321,"没有权限的用户");
     private int code;
     private String msg;

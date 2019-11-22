@@ -3,8 +3,11 @@ package com.cnct.service;
 import com.cnct.common.enums.ExceptionEnums;
 import com.cnct.common.exception.CnctException;
 import com.cnct.common.utils.NumberUtils;
+import com.cnct.common.vo.PageResult;
 import com.cnct.mapper.UserMapper;
 import com.cnct.pojo.User;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +15,9 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -81,7 +86,8 @@ public class UserService {
         } catch (Exception e) {
             throw new CnctException(ExceptionEnums.INVALID_VERFIY_CODE_DISABLED);
         }
-
+        System.out.println("code:"+code);
+        System.out.println("redisCode:"+redisCode);
         if(!StringUtils.equals(redisCode,code)){
             throw new CnctException(ExceptionEnums.INVALID_VERFIY_CODE);
         }
@@ -96,6 +102,7 @@ public class UserService {
      */
     public User register(User user) {
         user.setBannedStatus(1L);
+        user.setCreateDate(new Date());
         int i = userMapper.insertSelective(user);
         if(i == 0){
             throw new CnctException(ExceptionEnums.FAIL_ADD_USER);
@@ -127,4 +134,25 @@ public class UserService {
         }
     }
 
+    public PageResult<User> findAllUsersByPage(Integer page, Integer rows) {
+        PageHelper.startPage(page,rows);
+        List<User> users = userMapper.selectAll();
+        PageInfo info = new PageInfo(users);
+        PageResult<User> list = new PageResult<>();
+        list.setTotalPage(Long.valueOf(info.getPages()));
+        list.setTotal(info.getTotal());
+        return list;
+    }
+
+    public User queryUser(String phone, String password) {
+        User user = new User();
+        user.setPhone(phone);
+        user.setPassword(password);
+        user = userMapper.selectOne(user);
+        if(user.getId() != null)
+            return user;
+        else
+            throw new CnctException(ExceptionEnums.INVALID_USERNAME_PASSWORD);
+
+    }
 }
