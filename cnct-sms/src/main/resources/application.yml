@@ -1,0 +1,16 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: sms-service
+  rabbitmq:
+    host: 10.11.60.234
+    username: cnct
+    password: 123456
+    virtual-host: /cnct
+cnct:
+  sms:
+    accessKeyId: LTAI4Fw3NLgmX35dpcRKUaeu
+    accessKeySecret: TtrOh31UcWu8oW2sh9H4asyIDbJ14W
+    signName: java短信学习
+    verifyCodeTemplate: SMS_177247922

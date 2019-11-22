@@ -59,7 +59,7 @@ public class UserService {
             Map<String, String> msg = new HashMap<>();
             msg.put("phone", phone);
             msg.put("code", code);
-            //测试环境暂时屏蔽短信功能
+            //测试环境暂时屏蔽短信功能 TODO 上线时进行开放
 //            amqpTemplate.convertAndSend("cnct.sms.exchange", "sms.verify.code", msg);
             // 将code存入redis
             this.redisTemplate.opsForValue().set(KEY_PREFIX + phone, code, 5, TimeUnit.MINUTES);

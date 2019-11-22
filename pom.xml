@@ -16,6 +16,7 @@
         <module>cnct-user</module>
         <module>cnct-search</module>
         <module>cnct-perms</module>
+        <module>cnct-sms</module>
     </modules>
 
     <packaging>pom</packaging>
