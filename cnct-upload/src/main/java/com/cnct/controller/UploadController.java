@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadController {
     @Autowired
     private UploadService uploadService;
-    @PostMapping("upload/image")
+    @PostMapping("/upload/image")
     public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file){
         String url = uploadService.upload(file);
         System.out.println(url);
