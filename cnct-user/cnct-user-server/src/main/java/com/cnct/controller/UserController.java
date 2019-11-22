@@ -47,8 +47,8 @@ public class UserController {
      * @param phone
      * @return
      */
-    @PostMapping("/code")
-    public ResponseEntity<Void> sendVerifyCode(String phone){
+    @PostMapping("/code/{phone}")
+    public ResponseEntity<Void> sendVerifyCode(@PathVariable("phone")String phone){
         Boolean aBoolean = userService.sendVerifyCode(phone);
         return ResponseEntity.ok(null);
     }
@@ -59,8 +59,8 @@ public class UserController {
      * @param code
      * @return
      */
-    @PostMapping("/checkcode/{phone}")
-    public ResponseEntity<Boolean> checkVerifyCode(@PathVariable("phone") String phone,String code){
+    @PostMapping("/checkcode/{phone}/{code}")
+    public ResponseEntity<Boolean> checkVerifyCode(@PathVariable("phone") String phone,@PathVariable("phone")String code){
         Boolean res = userService.checkVerifyCode(phone,code);
         return ResponseEntity.ok(res);
     }
